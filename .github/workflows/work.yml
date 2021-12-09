@@ -19,3 +19,5 @@ jobs:
           # 余力があれば、フォルダがない場合はgit cloneする記述もかく。
           script: |
             cd /home
+            ls -a
+            mkdir testFolder
