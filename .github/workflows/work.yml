@@ -4,8 +4,19 @@ name: work
 on: [push]
 
 jobs:
-  firstWork:
-    name: WorkTest
+  build:
+    name: SSH connection test
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello World!"
+      - name: deploy(executing remote ssh)
+        timeout-minutes: 1 # step個別
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          # 余力があれば、フォルダがない場合はgit cloneする記述もかく。
+          script: |
+            cd /home
+            mkdir testFolder
