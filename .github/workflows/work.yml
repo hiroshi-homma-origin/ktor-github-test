@@ -1,0 +1,11 @@
+# Ktorサーバーサイドのgithub Action Test
+name: work
+
+on: [push]
+
+jobs:
+  firstWork:
+    name: WorkTest
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello World!"
